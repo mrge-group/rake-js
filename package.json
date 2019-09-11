@@ -1,0 +1,26 @@
+{
+  "name": "rake-js",
+  "version": "1.0.0",
+  "description": "Use rake to extract important keywords from large texts.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shopping24/rake-js.git"
+  },
+  "keywords": [
+    "rake",
+    "keyword",
+    "extraction",
+    "search",
+    "Rapid Automatic Keyword Extraction"
+  ],
+  "author": "shopping24",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shopping24/rake-js/issues"
+  },
+  "homepage": "https://github.com/shopping24/rake-js#readme"
+}
