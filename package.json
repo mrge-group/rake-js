@@ -4,7 +4,9 @@
   "description": "Use rake to extract important keywords from large texts.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run eslint && jest --config jest.config.js",
+    "build": "webpack --config webpack.config.js",
+    "eslint": "eslint src --ext .js"
   },
   "repository": {
     "type": "git",
@@ -17,10 +19,28 @@
     "search",
     "Rapid Automatic Keyword Extraction"
   ],
-  "author": "shopping24",
+  "author": {
+    "name": "Publisher Development Developers, shopping24",
+    "email": "cooperations@s24.com",
+    "url": "https://www.s24.com/"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/shopping24/rake-js/issues"
   },
-  "homepage": "https://github.com/shopping24/rake-js#readme"
+  "homepage": "https://github.com/shopping24/rake-js#readme",
+  "devDependencies": {
+    "jest": "^24.9.0",
+    "webpack": "^4.39.3",
+    "babel-jest": "^24.9.0",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.1"
+  },
+  "dependencies": {
+    "@babel/core": "^7.6.0",
+    "@babel/preset-env": "^7.6.0"
+  }
 }
