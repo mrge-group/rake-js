@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "npm run eslint && jest --config jest.config.js",
-    "build": "webpack --config webpack.config.js",
+    "dev": "node_modules/webpack/bin/webpack.js --config=webpack.config.js --mode=development",
+    "prod": "node_modules/webpack/bin/webpack.js --hide-modules --config=webpack.config.js --mode=production",
+    "watch": "node_modules/webpack/bin/webpack.js --watch --config=webpack.config.js --mode=development",
     "eslint": "eslint src --ext .js"
   },
   "repository": {
@@ -30,17 +32,19 @@
   },
   "homepage": "https://github.com/shopping24/rake-js#readme",
   "devDependencies": {
-    "jest": "^24.9.0",
-    "webpack": "^4.39.3",
-    "babel-jest": "^24.9.0",
+    "@babel/core": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-loader": "^8.0.6",
+    "babel-polyfill": "^6.26.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.17.2",
     "eslint-plugin-jsx-a11y": "^6.1.1",
-    "eslint-plugin-react": "^7.11.1"
-  },
-  "dependencies": {
-    "@babel/core": "^7.6.0",
-    "@babel/preset-env": "^7.6.0"
+    "eslint-plugin-react": "^7.11.1",
+    "jest": "^24.9.0",
+    "path": "^0.12.7",
+    "webpack": "^4.40.2",
+    "webpack-cli": "^3.3.8"
   }
 }

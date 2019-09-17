@@ -1,6 +1,13 @@
+const path = require('path')
+
 module.exports = {
+    entry: {
+        'rake': [
+             path.resolve(__dirname, 'src/rake.js')
+        ]
+    },
     output: {
-        filename: 'dist/[name].js'
+        filename: '[name].js'
     },
     module: {
         rules: [
