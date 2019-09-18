@@ -1,4 +1,6 @@
 /**
+ * Extract combined list of keywords and phrases with related keywords. This list is not ranked and will contain
+ * irrelevant data.
  *
  * @param {String[]} sentences
  * @param {String[]} stopWords
@@ -7,6 +9,8 @@
  * @param {Number}   minAdjWordsPerPhrase
  * @param {Number}   maxAdjWordsPerPhrase
  * @param {Number}   minPhraseFreqAdj
+ *
+ * @returns {String[]}
  */
 const findCandidateKeywords = (sentences, stopWords, {
     minCharLength,
@@ -16,12 +20,12 @@ const findCandidateKeywords = (sentences, stopWords, {
     minPhraseFreqAdj
 }) => {
     // Build filtered phrases from stop words
-    const phrases = splitByStopWords(sentences, stopWords)
+    const keywords = splitByStopWords(sentences, stopWords)
     .map(phrase => phrase.trim().toLowerCase())
     .filter(phrase => isAcceptable(phrase, minCharLength, maxWordsPerPhrase))
 
     // Extract additional candidates
-    const adjoinedCandidates = extractKeyPhrases(
+    const keyPhrases = extractRelatedKeyPhrases(
         sentences,
         stopWords,
         minAdjWordsPerPhrase,
@@ -29,7 +33,7 @@ const findCandidateKeywords = (sentences, stopWords, {
         minPhraseFreqAdj
     )
 
-    return phrases.concat(adjoinedCandidates)
+    return keywords.concat(keyPhrases)
 }
 
 /**
@@ -76,13 +80,32 @@ const isAcceptable = (phrase, minCharLength, maxWordsPerPhrase) => {
     return alpha > digits
 }
 
-const extractKeyPhrases = (sentences, stopWords, minAdjWordsPerPhrase, maxAdjWordsPerPhrase, minPhraseFreqAdj) => {
-    const candidatePhrases = sentences.map(sentence => extractKeyPhrasesFromSentence(
+/**
+ * Extracts key phrases from sentences.
+ *
+ * @param {String[]} sentences
+ * @param {String[]} stopWords
+ * @param {Number}   minAdjWordsPerPhrase
+ * @param {Number}   maxAdjWordsPerPhrase
+ * @param {Number}   minPhraseFreqAdj
+ *
+ * @returns {String[]}
+ */
+const extractRelatedKeyPhrases = (
+    sentences,
+    stopWords,
+    minAdjWordsPerPhrase,
+    maxAdjWordsPerPhrase,
+    minPhraseFreqAdj
+) => {
+    const candidatePhrases = sentences.map(sentence => extractRelatedKeyPhrasesFromSentence(
         sentence,
         stopWords,
         minAdjWordsPerPhrase,
         maxAdjWordsPerPhrase
-    ))
+    )).flat().filter(candidate => candidate.length > 0)
+
+    return filterKeyPhrases(candidatePhrases, minPhraseFreqAdj)
 }
 
 /**
@@ -97,7 +120,7 @@ const extractKeyPhrases = (sentences, stopWords, minAdjWordsPerPhrase, maxAdjWor
  *
  * @returns {String[]}
  */
-const extractKeyPhrasesFromSentence = (sentence, stopWords, minAdjWordsPerPhrase, maxAdjWordsPerPhrase) => {
+const extractRelatedKeyPhrasesFromSentence = (sentence, stopWords, minAdjWordsPerPhrase, maxAdjWordsPerPhrase) => {
     const words = sentence.toLowerCase().split(' ')
     const validCandidates = []
 
@@ -150,5 +173,23 @@ const extractKeyPhrasesFromSentence = (sentence, stopWords, minAdjWordsPerPhrase
     return validCandidates
 }
 
+/**
+ * Returns array with distinct phrases. Phrases must occur more or equal times than `minPhraseFreqAdj` to be valid.
+ *
+ * @param {String[]} phrases
+ * @param {Number}   minPhraseFreqAdj
+ *
+ * @returns {String[]}
+ */
+const filterKeyPhrases = (phrases, minPhraseFreqAdj) => [...new Set(phrases)]
+    .filter(distinctPhrase => phrases.filter(phrase => phrase === distinctPhrase).length >= minPhraseFreqAdj)
+
 export default findCandidateKeywords
-export { findCandidateKeywords, splitByStopWords, isAcceptable, extractKeyPhrases }
+export {
+    findCandidateKeywords,
+    splitByStopWords,
+    isAcceptable,
+    extractRelatedKeyPhrases,
+    extractRelatedKeyPhrasesFromSentence,
+    filterKeyPhrases
+}
