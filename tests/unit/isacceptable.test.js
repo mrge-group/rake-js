@@ -1,12 +1,18 @@
 import { isAcceptable } from '../../src/keywords'
 
 describe('isAcceptable', () => {
-    const phrase = 'lirum larum löffelstiel lol rofl'
+    const phraseOne = 'lirum larum löffelstiel lol rofl frodo baggins'
+    const phraseTwo = '1233 38287 2228 abc'
 
-    it('should decide whether a phrase qualifies', () => {
-        const notAccepted = isAcceptable(phrase, 2, 4)
-        const accepted = isAcceptable(phrase, 2, 7)
-        expect(notAccepted).toBeFalsy()
-        expect(accepted).toBeTruthy()
+    it('should have correct length', () => {
+        const phraseTooLong = isAcceptable(phraseOne, 2, 4)
+        const justRightLength = isAcceptable(phraseOne, 2, 7)
+        expect(phraseTooLong).toBeFalsy()
+        expect(justRightLength).toBeTruthy()
+    })
+
+    it('should not have more digits than chars', () => {
+        const tooManyDigits = isAcceptable(phraseTwo, 1, 10)
+        expect(tooManyDigits).toBeFalsy()
     })
 })
