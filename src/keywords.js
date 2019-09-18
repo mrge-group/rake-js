@@ -61,7 +61,7 @@ const splitByStopWords = (sentences, stopWords) => {
  * @returns {boolean}
  */
 const isAcceptable = (phrase, minCharLength, maxWordsPerPhrase) => {
-    if (phrase.length > minCharLength) {
+    if (phrase.length < minCharLength) {
         return false
     }
 
