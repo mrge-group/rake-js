@@ -1,6 +1,5 @@
 
 
-
 const defaultValues = {
     minCharLength: 1,
     maxWordsLength: 5,

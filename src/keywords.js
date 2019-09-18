@@ -76,11 +76,9 @@ const isAcceptable = (phrase, minCharLength, maxWordsLength) => {
     return alpha > digits
 }
 
-const extractAdjoinedCandidates = (sentences, stopWords, minWordsLengthAdj, maxWordsLengthAdj, minPhraseFreqAdj) => {
-    return sentences.filter(sentence => {
+const extractAdjoinedCandidates = (sentences, stopWords, minWordsLengthAdj, maxWordsLengthAdj, minPhraseFreqAdj) => sentences.filter(sentence => {
 
-    })
-}
+})
 
 export default findCandidateKeywords
 export { findCandidateKeywords, splitByStopWords, isAcceptable, extractAdjoinedCandidates }
