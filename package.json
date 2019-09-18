@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npm run eslint && jest --config jest.config.js",
+    "test:jest": "jest --verbose --config jest.config.js",
     "dev": "node_modules/webpack/bin/webpack.js --config=webpack.config.js --mode=development",
     "prod": "node_modules/webpack/bin/webpack.js --hide-modules --config=webpack.config.js --mode=production",
     "watch": "node_modules/webpack/bin/webpack.js --watch --config=webpack.config.js --mode=development",
@@ -35,6 +36,7 @@
     "@babel/core": "^7.6.0",
     "@babel/preset-env": "^7.6.0",
     "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
     "babel-polyfill": "^6.26.0",
     "eslint": "^4.19.1",
