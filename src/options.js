@@ -2,10 +2,10 @@
 
 const defaultValues = {
     minCharLength: 1,
-    maxWordsLength: 5,
+    maxWordsPerPhrase: 5,
     minKeywordFrequency: 1,
-    minWordsLengthAdj: 1,
-    maxWordsLengthAdj: 1,
+    minAdjWordsPerPhrase: 1,
+    maxAdjWordsPerPhrase: 1,
     minPhraseFreqAdj: 2
 }
 
