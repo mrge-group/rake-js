@@ -1,5 +1,5 @@
 import { splitByStopWords } from '../../src/lib/keywords'
-import mockData from '../__mocks__/mockData';
+import mockData from '../__mocks__/mockData'
 
 
 describe('split by stop words', () => {
