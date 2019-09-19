@@ -1,8 +1,9 @@
 import { splitByStopWords } from '../../src/keywords'
+import mockData from '../__mocks__/mockData';
 
 
 describe('split by stop words', () => {
-    const stopWords = ['eins', 'fünf', 'neun']
+    const stopWords = mockData.stopwords
     let sentences = ['eins zwei drei vier fünf sechs sieben acht neun zehn', 'eins eins eins vier']
     const splitWords = splitByStopWords(sentences, stopWords)
 
