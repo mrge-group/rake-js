@@ -8,6 +8,7 @@ const mockData = {
         'pok pok art party.',
     defaultSentence: 'eins zwei drei vier fünf sechs sieben acht neun zehn',
     stopwords: ['eins', 'fünf', 'neun'],
+    specialChars: '/..:##----.--//./'
 }
 
 export default mockData
