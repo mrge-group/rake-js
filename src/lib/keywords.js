@@ -51,8 +51,8 @@ const splitByStopWords = (sentences, stopWords) => {
 
 /**
  * Returns true if a phrase is acceptable, otherwise false.
- * A phrase is acceptable if the phrase has at least minCharLength of characters, not more than maxWordsPerPhrase of words
- * and the phrase has more non-numeric characters than numeric.
+ * A phrase is acceptable if the phrase has at least minCharLength of characters, not more than maxWordsPerPhrase of
+ * words and the phrase has more non-numeric characters than numeric.
  *
  * @param {String} phrase
  * @param {Number} minCharLength
@@ -135,7 +135,7 @@ const extractRelatedKeyPhrasesFromSentence = (sentence, stopWords, minAdjWordsPe
             }
 
             // `candidate` will hold the key phrase, beginning with the first key word.
-            let candidate = [words[candidatePosition]]
+            const candidate = [words[candidatePosition]]
             // `adjoinedPosition` is the current word position for the next loop going through words
             // for the current key phrase.
             let adjoinedPosition = 1
@@ -147,7 +147,7 @@ const extractRelatedKeyPhrasesFromSentence = (sentence, stopWords, minAdjWordsPe
             // Get follow up words after candidate phrase beginning until we found enough keywords or we are at the end
             // of the sentence.
             while (foundKeyWords < keywordsLimit && candidatePosition + adjoinedPosition < words.length) {
-                let nextWordForCandidate = words[candidatePosition + adjoinedPosition]
+                const nextWordForCandidate = words[candidatePosition + adjoinedPosition]
                 candidate.push(nextWordForCandidate)
 
                 if (stopWords.includes(nextWordForCandidate)) {
@@ -162,7 +162,7 @@ const extractRelatedKeyPhrasesFromSentence = (sentence, stopWords, minAdjWordsPe
             // Summary: We have a valid candidate phrase if we have at least one stop word in our phrase, the phrase is
             // not starting or ending with a stop word and we have `keywordsLimit` keywords.
             if (containsStopWord
-                && ! stopWords.includes(candidate[candidate.length - 1])
+                && !stopWords.includes(candidate[candidate.length - 1])
                 && foundKeyWords === keywordsLimit
             ) {
                 validCandidates.push(candidate.join(' '))
@@ -182,7 +182,7 @@ const extractRelatedKeyPhrasesFromSentence = (sentence, stopWords, minAdjWordsPe
  * @returns {String[]}
  */
 const filterKeyPhrases = (phrases, minPhraseFreqAdj) => [...new Set(phrases)]
-    .filter(distinctPhrase => phrases.filter(phrase => phrase === distinctPhrase).length >= minPhraseFreqAdj)
+.filter(distinctPhrase => phrases.filter(phrase => phrase === distinctPhrase).length >= minPhraseFreqAdj)
 
 export default findCandidateKeywords
 export {
