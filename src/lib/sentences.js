@@ -6,7 +6,7 @@
  * @returns {String[]}
  */
 const splitSentences = (text) => {
-    const delimiters = /[\r\n\t.,:;!?"'\-\u2019\u2013()\[\]]/ig
+    const delimiters = /[\r\n\t.,:;!?"'\-\u2019\u2013()[\]]/ig
     return text.split(delimiters)
 }
 
