@@ -11,6 +11,8 @@ const rake = (text, stopWords = [], overrideOptions = {}) => {
     const candidatePhrases = findCandidateKeywords(sentences, stopWords, options)
 
     const wordScores = calculateWordScores(candidatePhrases)
+
+    return calculatePhraseScores(candidatePhrases, wordScores, options)
 }
 
 export default rake

@@ -4,11 +4,11 @@
  *
  * @param {String[]} phrases
  *
- * @returns {Object}
+ * @returns {{score: number, word: String}[]}
  */
 const calculateWordScores = (phrases) => {
     const wordsFrequency = {}
-    let wordsDegree = {}
+    const wordsDegree = {}
 
     phrases.forEach(phrase => {
         const words = phrase.split(' ')
@@ -20,9 +20,10 @@ const calculateWordScores = (phrases) => {
         })
     })
 
-    return Object.assign({}, ...Object.keys(wordsFrequency).map(word => ({
-        [word]: (wordsDegree[word] + wordsFrequency[word] || 0) / wordsFrequency[word]
-    })))
+    return Object.keys(wordsFrequency).map(word => ({
+        score: (wordsDegree[word] + wordsFrequency[word] || 0) / (wordsFrequency[word] * 1.0),
+        word: word
+    }))
 }
 
 export { calculateWordScores }
