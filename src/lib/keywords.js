@@ -134,7 +134,7 @@ const extractRelatedKeyPhrasesFromSentence = (sentence, stopWords, minAdjWordsPe
                 continue
             }
 
-            // `candidate` will hold the key phrase, beginning with the current key word.
+            // `candidate` will hold the key phrase, beginning with the first key word.
             let candidate = [words[candidatePosition]]
             // `adjoinedPosition` is the current word position for the next loop going through words
             // for the current key phrase.

@@ -1,4 +1,4 @@
-import { splitByStopWords } from '../../src/keywords'
+import { splitByStopWords } from '../../src/lib/keywords'
 
 
 describe('split by stop words', () => {
