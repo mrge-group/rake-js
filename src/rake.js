@@ -13,6 +13,7 @@ const rake = (text, stopWords = [], overrideOptions = {}) => {
     const wordScores = calculateWordScores(candidatePhrases)
 
     return calculatePhraseScores(candidatePhrases, wordScores, options)
+    .sort((a, b) => (a.score > b.score) ? 1 : -1)
 }
 
 export default rake
