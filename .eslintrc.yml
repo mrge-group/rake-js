@@ -46,8 +46,6 @@ rules:
   no-param-reassign: off
   # we want to use plusplus
   no-plusplus: off
-  # turn off, because we use generators
-  no-restricted-syntax: off
   # we need template curly inside of string for the custom views
   no-template-curly-in-string: error
   # don't just warn, instead error if unused vars

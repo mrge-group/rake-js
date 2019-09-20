@@ -21,7 +21,7 @@ const calculateWordScores = (phrases) => {
 
     return Object.keys(wordsFrequency).map(word => ({
         score: (wordsDegree[word] + wordsFrequency[word] || 0) / (wordsFrequency[word] * 1.0),
-        word: word
+        word
     }))
 }
 
@@ -43,15 +43,15 @@ const calculatePhraseScores = (phrases, wordsScore, { minKeywordFrequency }) => 
     }
 
     return distinctPhrases.map(phrase => {
-        const phraseScore = phrase.split(' ').reduce((accumulator, word) => {
-            const wordScore = wordsScore.filter(wordScore => wordScore.word === word)
-            .reduce((accumulator, wordScore) => accumulator + wordScore.score, 0)
+        const phraseScore = phrase.split(' ')
+        .reduce((phraseAccumulator, word) => {
+            const accumulatedWordScore = wordsScore.filter(wordScore => wordScore.word === word)
+            .reduce((wordAccumulator, wordScore) => wordAccumulator + wordScore.score, 0)
 
-
-            return accumulator + wordScore
+            return phraseAccumulator + accumulatedWordScore
         }, 0)
 
-        return { score: phraseScore, phrase: phrase }
+        return { score: phraseScore, phrase }
     })
 }
 
