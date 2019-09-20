@@ -2,7 +2,7 @@
   "name": "rake-js",
   "version": "1.0.0",
   "description": "Use rake to extract important keywords from large texts.",
-  "main": "index.js",
+  "main": "src/rake.js",
   "scripts": {
     "test": "npm run eslint && jest --config jest.config.js",
     "test:jest": "jest --verbose --config jest.config.js",
