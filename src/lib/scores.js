@@ -1,3 +1,5 @@
+import splitWords from '../utils/splitWords'
+
 /**
  * Returns objects within an array including words with their calculated score.
  *
@@ -10,7 +12,7 @@ const calculateWordScores = (phrases) => {
     const wordsDegree = {}
 
     phrases.forEach(phrase => {
-        const words = phrase.split(' ')
+        const words = splitWords(phrase)
         const phraseDegree = words.length - 1
 
         words.forEach(word => {
@@ -43,7 +45,7 @@ const calculatePhraseScores = (phrases, wordsScore, { minKeywordFrequency }) => 
     }
 
     return distinctPhrases.map(phrase => {
-        const phraseScore = phrase.split(' ')
+        const phraseScore = splitWords(phrase)
         .reduce((phraseAccumulator, word) => {
             const accumulatedWordScore = wordsScore.filter(wordScore => wordScore.word === word)
             .reduce((wordAccumulator, wordScore) => wordAccumulator + wordScore.score, 0)

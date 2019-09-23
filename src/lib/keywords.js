@@ -1,3 +1,5 @@
+import splitWords from '../utils/splitWords'
+
 /**
  * Extract combined list of keywords and phrases with related keywords. This list is not ranked and will contain
  * irrelevant data.
@@ -45,8 +47,8 @@ const findCandidateKeywords = (sentences, stopWords, {
  * @returns {String[]}
  */
 const splitByStopWords = (sentences, stopWords) => {
-    const stopWordsList = new RegExp(stopWords.join('|'), 'i')
-    return sentences.map(sentence => sentence.split(stopWordsList)).flat()
+    const stopWordsList = new RegExp(`\\s+(?:${stopWords.join('|')})\\s+`, 'gmi')
+    return sentences.flatMap(sentence => sentence.split(stopWordsList))
 }
 
 /**
@@ -65,7 +67,7 @@ const isAcceptable = (phrase, minCharLength, maxWordsPerPhrase) => {
         return false
     }
 
-    const words = phrase.split(' ')
+    const words = splitWords(phrase)
     if (words.length > maxWordsPerPhrase) {
         return false
     }
@@ -121,7 +123,7 @@ const extractRelatedKeyPhrases = (
  * @returns {String[]}
  */
 const extractRelatedKeyPhrasesFromSentence = (sentence, stopWords, minAdjWordsPerPhrase, maxAdjWordsPerPhrase) => {
-    const words = sentence.toLowerCase().split(' ')
+    const words = splitWords(sentence.toLowerCase())
     const validCandidates = []
 
     // Step by step through desired word limit per phrase.
