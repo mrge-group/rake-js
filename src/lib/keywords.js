@@ -130,14 +130,17 @@ const extractRelatedKeyPhrasesFromSentence = (sentence, stopWords, minAdjWordsPe
     for (let keywordsLimit = minAdjWordsPerPhrase; keywordsLimit <= maxAdjWordsPerPhrase; keywordsLimit++) {
         // Going through list of words.
         for (let candidatePosition = 0; candidatePosition < words.length - keywordsLimit; candidatePosition++) {
+            // The beginning word of the possibly valid candidate phrase.
+            const candidateWord = words[candidatePosition]
+
             // Stop if the first word for the possible key phrase is a stop word. Key phrases should not start with
             // a stop word.
-            if (stopWords.includes(words[candidatePosition])) {
+            if (stopWords.includes(candidateWord) || candidateWord === '') {
                 continue
             }
 
             // `candidate` will hold the key phrase, beginning with the first key word.
-            const candidate = [words[candidatePosition]]
+            const candidate = [candidateWord]
             // `adjoinedPosition` is the current word position for the next loop going through words
             // for the current key phrase.
             let adjoinedPosition = 1
@@ -149,16 +152,17 @@ const extractRelatedKeyPhrasesFromSentence = (sentence, stopWords, minAdjWordsPe
             // Get follow up words after candidate phrase beginning until we found enough keywords or we are at the end
             // of the sentence.
             while (foundKeyWords < keywordsLimit && candidatePosition + adjoinedPosition < words.length) {
-                const nextWordForCandidate = words[candidatePosition + adjoinedPosition]
-                candidate.push(nextWordForCandidate)
+                const nextWordForCandidate = words[candidatePosition + adjoinedPosition++]
 
-                if (stopWords.includes(nextWordForCandidate)) {
-                    containsStopWord = true
-                } else {
-                    foundKeyWords++
+                if (nextWordForCandidate !== '') {
+                    candidate.push(nextWordForCandidate)
+
+                    if (stopWords.includes(nextWordForCandidate)) {
+                        containsStopWord = true
+                    } else {
+                        foundKeyWords++
+                    }
                 }
-
-                adjoinedPosition++
             }
 
             // Summary: We have a valid candidate phrase if we have at least one stop word in our phrase, the phrase is
