@@ -47,7 +47,7 @@ const findCandidateKeywords = (sentences, stopWords, {
  * @returns {String[]}
  */
 const splitByStopWords = (sentences, stopWords) => {
-    const stopWordsList = new RegExp(`\\s+(?:${stopWords.join('|')})\\s+`, 'gmi')
+    const stopWordsList = new RegExp(`\\b(?:${stopWords.join('|')})\\b`, 'gmi')
     return sentences.flatMap(sentence => sentence.split(stopWordsList))
 }
 
