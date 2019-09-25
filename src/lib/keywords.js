@@ -23,7 +23,7 @@ const findCandidateKeywords = (sentences, stopWords, {
     minAdjPhraseFreq
 }) => {
     // Build filtered phrases from stop words
-    const keywords = splitByStopWords(sentences, stopWords)
+    const looseKeywords = sentences.flatMap(sentence => splitByStopWords(sentence, stopWords))
     .map(phrase => phrase.trim().toLowerCase())
     .filter(phrase => isAcceptable(phrase, minCharLength, maxWordsPerPhrase))
 
@@ -36,7 +36,7 @@ const findCandidateKeywords = (sentences, stopWords, {
         minAdjPhraseFreq
     )
 
-    return keywords.concat(keyPhrases)
+    return looseKeywords.concat(keyPhrases)
 }
 
 /**
