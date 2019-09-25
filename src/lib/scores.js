@@ -37,12 +37,8 @@ const calculateWordScores = (phrases) => {
  * @returns {{score: Number, phrase: String}[]}
  */
 const calculatePhraseScores = (phrases, wordsScore, { minKeywordFrequency }) => {
-    let distinctPhrases = [...new Set(phrases)]
-
-    if (minKeywordFrequency > 1) {
-        distinctPhrases = distinctPhrases
-        .filter(distinctPhrase => (phrases.filter(phrase => phrase === distinctPhrase)).length > minKeywordFrequency)
-    }
+    const distinctPhrases = [...new Set(phrases)]
+    .filter(phrase => phrase.length > minKeywordFrequency)
 
     return distinctPhrases.map(phrase => {
         const phraseScore = splitWords(phrase)
