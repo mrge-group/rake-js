@@ -11,7 +11,7 @@ import splitByStopWords from '../utils/splitByStopWords'
  * @param {Number}   maxWordsPerPhrase
  * @param {Number}   minAdjWordsPerPhrase
  * @param {Number}   maxAdjWordsPerPhrase
- * @param {Number}   minPhraseFreqAdj
+ * @param {Number}   minAdjPhraseFreq
  *
  * @returns {String[]}
  */
@@ -20,7 +20,7 @@ const findCandidateKeywords = (sentences, stopWords, {
     maxWordsPerPhrase,
     minAdjWordsPerPhrase,
     maxAdjWordsPerPhrase,
-    minPhraseFreqAdj
+    minAdjPhraseFreq
 }) => {
     // Build filtered phrases from stop words
     const keywords = splitByStopWords(sentences, stopWords)
@@ -33,7 +33,7 @@ const findCandidateKeywords = (sentences, stopWords, {
         stopWords,
         minAdjWordsPerPhrase,
         maxAdjWordsPerPhrase,
-        minPhraseFreqAdj
+        minAdjPhraseFreq
     )
 
     return keywords.concat(keyPhrases)
@@ -77,7 +77,7 @@ const isAcceptable = (phrase, minCharLength, maxWordsPerPhrase) => {
  * @param {String[]} stopWords
  * @param {Number}   minAdjWordsPerPhrase
  * @param {Number}   maxAdjWordsPerPhrase
- * @param {Number}   minPhraseFreqAdj
+ * @param {Number}   minAdjPhraseFreq
  *
  * @returns {String[]}
  */
@@ -86,7 +86,7 @@ const extractRelatedKeyPhrases = (
     stopWords,
     minAdjWordsPerPhrase,
     maxAdjWordsPerPhrase,
-    minPhraseFreqAdj
+    minAdjPhraseFreq
 ) => {
     const candidatePhrases = sentences.flatMap(sentence => extractRelatedKeyPhrasesFromSentence(
         sentence,
@@ -95,7 +95,7 @@ const extractRelatedKeyPhrases = (
         maxAdjWordsPerPhrase
     ))
 
-    return filterKeyPhrases(candidatePhrases, minPhraseFreqAdj)
+    return filterKeyPhrases(candidatePhrases, minAdjPhraseFreq)
 }
 
 /**
@@ -168,15 +168,15 @@ const extractRelatedKeyPhrasesFromSentence = (sentence, stopWords, minAdjWordsPe
 }
 
 /**
- * Returns array with distinct phrases. Phrases must occur more or equal times than `minPhraseFreqAdj` to be valid.
+ * Returns array with distinct phrases. Phrases must occur more or equal times than `minAdjPhraseFreq` to be valid.
  *
  * @param {String[]} phrases
- * @param {Number}   minPhraseFreqAdj
+ * @param {Number}   minAdjPhraseFreq
  *
  * @returns {String[]}
  */
-const filterKeyPhrases = (phrases, minPhraseFreqAdj) => [...new Set(phrases)]
-.filter(distinctPhrase => phrases.filter(phrase => phrase === distinctPhrase).length >= minPhraseFreqAdj)
+const filterKeyPhrases = (phrases, minAdjPhraseFreq) => [...new Set(phrases)]
+.filter(distinctPhrase => phrases.filter(phrase => phrase === distinctPhrase).length >= minAdjPhraseFreq)
 
 export default findCandidateKeywords
 export {

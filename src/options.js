@@ -5,8 +5,8 @@ const defaultValues = {
     maxWordsPerPhrase: 5,
     minKeywordFrequency: 1,
     minAdjWordsPerPhrase: 1,
-    maxAdjWordsPerPhrase: 1,
-    minPhraseFreqAdj: 2
+    maxAdjWordsPerPhrase: 3,
+    minAdjPhraseFreq: 2
 }
 
 export default defaultValues
