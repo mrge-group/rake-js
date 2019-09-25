@@ -31,7 +31,7 @@ const calculateWordScores = (phrases) => {
  * Returns objects within an array including phrases and their score, accumulated by words and their score.
  *
  * @param {String[]}                        phrases
- * @param {{score: number, word: String}[]} wordsScore
+ * @param {{score: Number, word: String}[]} wordsScore
  * @param {Number}                          minKeywordFrequency
  *
  * @returns {{score: Number, phrase: String}[]}
