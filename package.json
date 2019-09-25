@@ -48,5 +48,8 @@
     "path": "^0.12.7",
     "webpack": "^4.40.2",
     "webpack-cli": "^3.3.8"
+  },
+  "dependencies": {
+    "xregexp": "^4.2.4"
   }
 }
