@@ -22,7 +22,7 @@ const calculateWordScores = (phrases) => {
     })
 
     return Object.keys(wordsFrequency).map(word => ({
-        score: (wordsDegree[word] + wordsFrequency[word] || 0) / (wordsFrequency[word] * 1.0),
+        score: (wordsDegree[word] + wordsFrequency[word]) / (wordsFrequency[word] || 1),
         word
     }))
 }
