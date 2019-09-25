@@ -1,5 +1,5 @@
 import defaultOptions from './options'
-import { splitSentences } from './lib/sentences'
+import splitSentences from './utils/splitSentences'
 import { findCandidateKeywords } from './lib/keywords'
 import { calculateWordScores, calculatePhraseScores } from './lib/scores'
 

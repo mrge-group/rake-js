@@ -1,4 +1,5 @@
 import splitWords from '../utils/splitWords'
+import splitByStopWords from '../utils/splitByStopWords'
 
 /**
  * Extract combined list of keywords and phrases with related keywords. This list is not ranked and will contain
@@ -36,19 +37,6 @@ const findCandidateKeywords = (sentences, stopWords, {
     )
 
     return keywords.concat(keyPhrases)
-}
-
-/**
- * Split sentences into phrases separated by stop words.
- *
- * @param {String[]} sentences
- * @param {String[]} stopWords
- *
- * @returns {String[]}
- */
-const splitByStopWords = (sentences, stopWords) => {
-    const stopWordsList = new RegExp(`\\b(?:${stopWords.join('|')})\\b`, 'gmi')
-    return sentences.flatMap(sentence => sentence.split(stopWordsList))
 }
 
 /**
@@ -100,12 +88,12 @@ const extractRelatedKeyPhrases = (
     maxAdjWordsPerPhrase,
     minPhraseFreqAdj
 ) => {
-    const candidatePhrases = sentences.map(sentence => extractRelatedKeyPhrasesFromSentence(
+    const candidatePhrases = sentences.flatMap(sentence => extractRelatedKeyPhrasesFromSentence(
         sentence,
         stopWords,
         minAdjWordsPerPhrase,
         maxAdjWordsPerPhrase
-    )).flat().filter(candidate => candidate.length > 0)
+    ))
 
     return filterKeyPhrases(candidatePhrases, minPhraseFreqAdj)
 }
@@ -193,7 +181,6 @@ const filterKeyPhrases = (phrases, minPhraseFreqAdj) => [...new Set(phrases)]
 export default findCandidateKeywords
 export {
     findCandidateKeywords,
-    splitByStopWords,
     isAcceptable,
     extractRelatedKeyPhrases,
     extractRelatedKeyPhrasesFromSentence,
