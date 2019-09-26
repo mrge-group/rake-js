@@ -3,6 +3,16 @@ import splitSentences from './utils/splitSentences'
 import { findCandidateKeywords } from './lib/keywords'
 import { calculateWordScores, calculatePhraseScores } from './lib/scores'
 
+/**
+ * @param {String}   text
+ *                   The text you want to analyse.
+ * @param {String[]} stopWords
+ *                   Stop words used to split and score the text.
+ * @param {Object}   overrideOptions
+ *                   Override default filtering and scoring options.
+ *
+ * @returns  {{score: Number, phrase: String}[]}
+ */
 const rake = (text, stopWords = [], overrideOptions = {}) => {
     const options = Object.assign(defaultOptions, overrideOptions)
 
