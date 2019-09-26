@@ -5,6 +5,7 @@ let fileString = ''
 let stopWords = []
 
 fs.readdirSync(directory).forEach(file => {
+
     fileString = fs.readFileSync(`stopwords/${file}`, 'utf8')
     stopWords = fileString.split(/\n/)
     const output = []
@@ -13,7 +14,10 @@ fs.readdirSync(directory).forEach(file => {
             output.push((stopWords[i]).trim())
         }
     }
-    fs.writeFile(`dist/${file}.js`, JSON.stringify(output), (err) => {
+
+    const fileOutputString = file.replace('.txt', '')
+
+    fs.writeFile(`dist/${fileOutputString}.js`, 'export default ' + JSON.stringify(output), (err) => {
         if (err) throw err
     })
 })
