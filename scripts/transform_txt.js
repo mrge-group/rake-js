@@ -1,10 +1,14 @@
 const fs = require('fs')
-const path = 'stopwords/de.txt'
-const fileString = fs.readFileSync(path, 'utf8')
-const stopWords = fileString.split(/\n/)
 
-fs.writeFile('dist/stoplist.js', JSON.stringify(stopWords), (err) => {
-    if (err) throw err
+const directory = './stopwords/'
+
+fs.readdirSync(directory).forEach(file => {
+    const fileString = fs.readFileSync(`stopwords/${file}`, 'utf8')
+    const stopWords = fileString.split(/\n/)
+
+    fs.writeFile(`dist/${file}.js`, JSON.stringify(stopWords), (err) => {
+        if (err) throw err
+    })
 })
 
 // var lines = $('#input').val().split(/\n/);
