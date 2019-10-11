@@ -1,6 +1,6 @@
 {
-  "name": "rake-js",
-  "version": "1.0.0",
+  "name": "@shopping24/rake-js",
+  "version": "0.0.0",
   "description": "Use rake to extract important keywords from large texts.",
   "main": "src/rake.js",
   "scripts": {
@@ -34,8 +34,8 @@
   },
   "homepage": "https://github.com/shopping24/rake-js#readme",
   "devDependencies": {
-    "@babel/core": "^7.6.0",
-    "@babel/preset-env": "^7.6.0",
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
@@ -44,10 +44,10 @@
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.17.2",
     "eslint-plugin-jsx-a11y": "^6.1.1",
-    "eslint-plugin-react": "^7.11.1",
+    "eslint-plugin-react": "^7.16.0",
     "jest": "^24.9.0",
     "path": "^0.12.7",
-    "webpack": "^4.40.2",
+    "webpack": "^4.41.1",
     "webpack-cli": "^3.3.8"
   },
   "dependencies": {
