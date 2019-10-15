@@ -1,0 +1,82 @@
+env:
+  browser: true
+  es6: true
+
+# Using the highly recommended rules of Airbnb https://github.com/airbnb/javascript
+extends: airbnb
+
+rules:
+  # we want to leave out parentheses whenever we like at arrow functions
+  arrow-parens: off
+  # we want need empty superclass methods
+  class-methods-use-this: off
+  # no trailing commas
+  comma-dangle:
+    - warn
+    - never
+  # don't just warn, instead error if double =
+  eqeqeq: error
+  # we allow a line break after function's opening parentheses e.g. for giving arguments their own lines
+  function-paren-newline: off
+  # this project doesn't use a bundler and the modules are called by the browser which needs the file extensions
+  import/extensions: off
+  # don't force default exports in modules. it's annoying
+  import/prefer-default-export: off
+  import/no-unresolved: off
+  indent:
+    - warn
+    - 4
+    - MemberExpression: 0
+  # increase to 120 chars because of 4 indentation
+  max-len:
+    - warn
+    - 120
+  # allow conditional expression at arrow function
+  no-confusing-arrow: off
+  # don't error, just warn if console.log
+  no-console: warn
+  # don't error, just warn in case of debugging - maybe an error would be saver for production tough..
+  no-debugger: warn
+  no-empty: warn
+  # Eval is evil
+  no-eval: error
+  # sometimes lonely ifs are more readable
+  no-lonely-if: off
+  # allow overwriting properties of arguments
+  no-param-reassign: off
+  # we want to use plusplus
+  no-plusplus: off
+  # we need template curly inside of string for the custom views
+  no-template-curly-in-string: error
+  # don't just warn, instead error if unused vars
+  no-undef: error
+  no-unused-vars:
+    - error
+    - argsIgnorePattern: "^_"
+  # some functions need to call each other, so we have to disable this
+  no-use-before-define: off
+  # don't error, just warn at padding in blocks (empty lines between `{` and `}` )
+  padded-blocks: warn
+  # don't error, just warn if not using const
+  prefer-const: warn
+  # don't error, just warn
+  prefer-destructuring: warn
+  # don't error, just warn if concatenating strings with the + operator
+  prefer-template: warn
+  # airbnb has a dependency of react require, which gives an annoying warning
+  react/require-extension: off
+  # we don't want semicolons (unless needed)
+  semi:
+    - error
+    - never
+  # a space between a function's name and it's opening parentheses is weird
+  space-before-function-paren:
+    - warn
+    - never
+  object-curly-newline:
+    - off
+  prefer-arrow-callback:
+    - off
+  camelcase:
+    - off
+  no-continue: off

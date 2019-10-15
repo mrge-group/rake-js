@@ -1,10 +1,16 @@
 {
-  "name": "rake-js",
-  "version": "1.0.0",
+  "name": "@shopping24/rake-js",
+  "version": "0.0.0",
   "description": "Use rake to extract important keywords from large texts.",
-  "main": "index.js",
+  "main": "src/rake.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run eslint && jest --config jest.config.js",
+    "test:jest": "jest --verbose --config jest.config.js",
+    "dev": "npm run build:stoplist && node_modules/webpack/bin/webpack.js --config=webpack.config.js --mode=development",
+    "prod": "npm run build:stoplist && node_modules/webpack/bin/webpack.js --hide-modules --config=webpack.config.js --mode=production",
+    "watch": "node_modules/webpack/bin/webpack.js --watch --config=webpack.config.js --mode=development",
+    "eslint": "eslint src --ext .js",
+    "build:stoplist": "node scripts/transform_txt.js"
   },
   "repository": {
     "type": "git",
@@ -17,10 +23,34 @@
     "search",
     "Rapid Automatic Keyword Extraction"
   ],
-  "author": "shopping24",
+  "author": {
+    "name": "Publisher Development Developers, shopping24",
+    "email": "cooperations@s24.com",
+    "url": "https://www.s24.com/"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/shopping24/rake-js/issues"
   },
-  "homepage": "https://github.com/shopping24/rake-js#readme"
+  "homepage": "https://github.com/shopping24/rake-js#readme",
+  "devDependencies": {
+    "@babel/core": "~7.6.4",
+    "@babel/preset-env": "~7.6.3",
+    "babel-core": "~7.0.0-bridge.0",
+    "babel-jest": "~24.9.0",
+    "babel-loader": "~8.0.6",
+    "babel-polyfill": "~6.26.0",
+    "eslint": "~4.19.1",
+    "eslint-config-airbnb": "~16.1.0",
+    "eslint-plugin-import": "~2.17.2",
+    "eslint-plugin-jsx-a11y": "~6.1.1",
+    "eslint-plugin-react": "~7.16.0",
+    "jest": "~24.9.0",
+    "path": "~0.12.7",
+    "webpack": "~4.41.1",
+    "webpack-cli": "~3.3.8"
+  },
+  "dependencies": {
+    "xregexp": "~4.2.4"
+  }
 }
