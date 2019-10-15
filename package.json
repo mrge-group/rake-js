@@ -1,6 +1,6 @@
 {
   "name": "@shopping24/rake-js",
-  "version": "0.0.0",
+  "version": "1.0.0-0",
   "description": "Use rake to extract important keywords from large texts.",
   "main": "src/rake.js",
   "scripts": {
