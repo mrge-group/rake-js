@@ -17,7 +17,11 @@ fs.readdirSync(directory).forEach(file => {
 
     const fileOutputString = file.replace('.txt', '')
 
-    fs.writeFile(`dist/${fileOutputString}.js`, 'export default ' + JSON.stringify(output), (err) => {
+    fs.writeFile(`dist/${fileOutputString}.js`, 'window.RakeStopWords = ' + JSON.stringify(output), (err) => {
+        if (err) throw err
+    })
+
+    fs.writeFile(`src/stopwords/${fileOutputString}.js`, 'export default ' + JSON.stringify(output), (err) => {
         if (err) throw err
     })
 })

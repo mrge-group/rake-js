@@ -3,7 +3,7 @@ const path = require('path')
 module.exports = {
     entry: {
         'rake': [
-             path.resolve(__dirname, 'src/rake.js')
+             path.resolve(__dirname, 'src/dist.js')
         ]
     },
     output: {
