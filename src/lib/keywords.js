@@ -1,5 +1,6 @@
 import splitWords from '../utils/splitWords'
 import splitByStopWords from '../utils/splitByStopWords'
+import defaultOptions from "../options";
 
 /**
  * Extract combined list of keywords and phrases with related keywords. This list is not ranked and will contain
@@ -24,8 +25,8 @@ const findCandidateKeywords = (sentences, stopWords, {
 }) => {
     // Build filtered phrases from stop words
     const looseKeywords = sentences.flatMap(sentence => splitByStopWords(sentence, stopWords))
-    .map(phrase => phrase.trim().toLowerCase())
-    .filter(phrase => isAcceptable(phrase, minCharLength, maxWordsPerPhrase))
+        .map(phrase => phrase.trim().toLowerCase())
+        .filter(phrase => isAcceptable(phrase, minCharLength, maxWordsPerPhrase))
 
     // Extract additional candidates
     const keyPhrases = extractRelatedKeyPhrases(
@@ -168,6 +169,16 @@ const extractRelatedKeyPhrasesFromSentence = (sentence, stopWords, minAdjWordsPe
 }
 
 /**
+ * Returns array with distinct phrases. Must be larger than minKeywordFrequency
+ *
+ * @param candidatePhrases
+ * @param minKeywordFrequency
+ * @returns {String[]}
+ */
+const filterDistinctPhrases = (candidatePhrases, { minKeywordFrequency }) => [...new Set(candidatePhrases)]
+.filter(distinctPhrase => candidatePhrases.find(phrase => phrase === distinctPhrase).length > minKeywordFrequency)
+
+/**
  * Returns array with distinct phrases. Phrases must occur more or equal times than `minAdjPhraseFreq` to be valid.
  *
  * @param {String[]} phrases
@@ -184,5 +195,6 @@ export {
     isAcceptable,
     extractRelatedKeyPhrases,
     extractRelatedKeyPhrasesFromSentence,
-    filterKeyPhrases
+    filterKeyPhrases,
+    filterDistinctPhrases
 }
