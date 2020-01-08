@@ -18,6 +18,8 @@ const rake = (text, stopWords = [], overrideOptions = {}) => {
 
     const sentences = splitSentences(text)
 
+    // console.log('sentences: ', sentences)
+
     const candidatePhrases = findCandidateKeywords(sentences, stopWords, options)
 
     const wordScores = calculateWordScores(candidatePhrases)

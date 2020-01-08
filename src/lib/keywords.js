@@ -27,7 +27,6 @@ const findCandidateKeywords = (sentences, stopWords, {
     const looseKeywords = sentences.flatMap(sentence => splitByStopWords(sentence, stopWords))
         .map(phrase => phrase.trim().toLowerCase())
         .filter(phrase => isAcceptable(phrase, minCharLength, maxWordsPerPhrase))
-
     // Extract additional candidates
     const keyPhrases = extractRelatedKeyPhrases(
         sentences,
@@ -36,7 +35,6 @@ const findCandidateKeywords = (sentences, stopWords, {
         maxAdjWordsPerPhrase,
         minAdjPhraseFreq
     )
-
     return looseKeywords.concat(keyPhrases)
 }
 
@@ -55,12 +53,10 @@ const isAcceptable = (phrase, minCharLength, maxWordsPerPhrase) => {
     if (phrase.length < minCharLength) {
         return false
     }
-
     const words = splitWords(phrase)
-    if (words.length > maxWordsPerPhrase) {
+    if (maxWordsPerPhrase > 1 && words.length > maxWordsPerPhrase) {
         return false
     }
-
     const alpha = (phrase.match(/\D/g) || []).length
     const digits = (phrase.match(/\d/g) || []).length
 
@@ -175,8 +171,8 @@ const extractRelatedKeyPhrasesFromSentence = (sentence, stopWords, minAdjWordsPe
  * @param minKeywordFrequency
  * @returns {String[]}
  */
-const filterDistinctPhrases = (candidatePhrases, { minKeywordFrequency }) => [...new Set(candidatePhrases)]
-.filter(distinctPhrase => candidatePhrases.find(phrase => phrase === distinctPhrase).length > minKeywordFrequency)
+const filterDistinctPhrases = (candidatePhrases, {minKeywordFrequency}) => [...new Set(candidatePhrases)]
+    .filter(distinctPhrase => candidatePhrases.find(phrase => phrase === distinctPhrase).length > minKeywordFrequency)
 
 /**
  * Returns array with distinct phrases. Phrases must occur more or equal times than `minAdjPhraseFreq` to be valid.
@@ -187,7 +183,7 @@ const filterDistinctPhrases = (candidatePhrases, { minKeywordFrequency }) => [..
  * @returns {String[]}
  */
 const filterKeyPhrases = (phrases, minAdjPhraseFreq) => [...new Set(phrases)]
-.filter(distinctPhrase => phrases.filter(phrase => phrase === distinctPhrase).length >= minAdjPhraseFreq)
+    .filter(distinctPhrase => phrases.filter(phrase => phrase === distinctPhrase).length >= minAdjPhraseFreq)
 
 export default findCandidateKeywords
 export {
