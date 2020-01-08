@@ -1,6 +1,6 @@
 import defaultOptions from './options'
 import splitSentences from './utils/splitSentences'
-import { findCandidateKeywords } from './lib/keywords'
+import { findCandidateKeywords, filterDistinctPhrases } from './lib/keywords'
 import { calculateWordScores, calculatePhraseScores } from './lib/scores'
 
 /**
@@ -22,7 +22,9 @@ const rake = (text, stopWords = [], overrideOptions = {}) => {
 
     const wordScores = calculateWordScores(candidatePhrases)
 
-    return calculatePhraseScores(candidatePhrases, wordScores, options)
+    const distinctPhrases = filterDistinctPhrases(candidatePhrases, options)
+
+    return calculatePhraseScores(distinctPhrases, wordScores, options)
     .sort((a, b) => (a.score > b.score) ? -1 : 1)
 }
 
