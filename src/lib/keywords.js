@@ -54,7 +54,7 @@ const isAcceptable = (phrase, minCharLength, maxWordsPerPhrase) => {
         return false
     }
     const words = splitWords(phrase)
-    if (maxWordsPerPhrase > 1 && words.length > maxWordsPerPhrase) {
+    if ((maxWordsPerPhrase > 1 && words.length > maxWordsPerPhrase) || (maxWordsPerPhrase === 1 && words.length > maxWordsPerPhrase)) {
         return false
     }
     const alpha = (phrase.match(/\D/g) || []).length
