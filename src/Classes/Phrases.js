@@ -45,7 +45,7 @@ class Phrases {
      * @returns {*[]}
      */
     get result() {
-        return this._result
+        return Object.freeze(this._result)
     }
 
     /**
