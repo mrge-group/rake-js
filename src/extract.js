@@ -1,5 +1,5 @@
 import Phrases from './Classes/Phrases'
 
-const extract = (text) => new Phrases.Phrases({ original: text })
+const extract = (text) => new Phrases({ original: text })
 
 export default extract

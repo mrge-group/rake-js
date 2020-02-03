@@ -36,7 +36,7 @@ class Phrases {
      * @returns {Phrase}
      */
     phrase(phrase, score = 0) {
-        return new Phrase.Phrase(phrase, score)
+        return new Phrase(phrase, score)
     }
 
     /**
