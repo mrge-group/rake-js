@@ -35,7 +35,7 @@ class Phrases {
      * @param {Number} score
      * @returns {Phrase}
      */
-    phrase(phrase, score = 0) {
+    toPhrase(phrase, score = 0) {
         return new Phrase(phrase, score)
     }
 
