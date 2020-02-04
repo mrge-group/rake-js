@@ -25,7 +25,7 @@ const findCandidateKeywords = (sentences, stopWords, {
 }) => {
     // Build filtered phrases from stop words
     const looseKeywords = sentences.flatMap(sentence => splitByStopWords(sentence, stopWords))
-        .map(phrase => phrase.trim())
+        .map(phrase => phrase.trim().toLowerCase())
         .filter(phrase => isAcceptable(phrase, minCharLength, maxWordsPerPhrase))
     // Extract additional candidates
     const keyPhrases = extractRelatedKeyPhrases(
@@ -108,7 +108,7 @@ const extractRelatedKeyPhrases = (
  * @returns {String[]}
  */
 const extractRelatedKeyPhrasesFromSentence = (sentence, stopWords, minAdjWordsPerPhrase, maxAdjWordsPerPhrase) => {
-    const words = splitWords(sentence)
+    const words = splitWords(sentence.toLowerCase())
     const validCandidates = []
 
     // Step by step through desired word limit per phrase.
