@@ -451,6 +451,7 @@ siebentes
 sind
 so
 sobald
+sodass
 solang
 solche
 solchem
@@ -467,6 +468,7 @@ sondern
 sonst
 soweit
 sowie
+sowohl
 später
 startseite
 statt

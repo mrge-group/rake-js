@@ -13,13 +13,17 @@ const calculateWordScores = (phrases) => {
 
     phrases.forEach(phrase => {
         const words = splitWords(phrase)
-        const phraseDegree = words.length - 1
-
+        let phraseDegree = words.length - 1
+        if (words.length === 1) {
+            phraseDegree = 100
+        }
         words.forEach(word => {
             wordsFrequency[word] = ++wordsFrequency[word] || 1
             wordsDegree[word] = (wordsDegree[word] || 0) + phraseDegree
         })
     })
+
+    // console.log('wordsFrequency: ', wordsFrequency)
 
     return Object.keys(wordsFrequency).map(word => ({
         score: (wordsDegree[word] + wordsFrequency[word]) / (wordsFrequency[word] || 1),
