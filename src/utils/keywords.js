@@ -1,6 +1,7 @@
-import splitWords from '../utils/splitWords'
-import splitByStopWords from '../utils/splitByStopWords'
-import defaultOptions from "../options";
+import splitWords from '../lib/splitWords'
+import splitByStopWords from '../lib/splitByStopWords'
+
+
 
 /**
  * Extract combined list of keywords and phrases with related keywords. This list is not ranked and will contain
