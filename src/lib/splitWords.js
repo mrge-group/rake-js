@@ -1,7 +1,7 @@
 import XRegExp from 'xregexp/src'
 
 /**
- * Split words by characters that are not word characters, digits, underscore, plus, minus and slash.
+ * Split words by characters-non-word characters, digits, underscore, plus, minus and slash.
  *
  * @param {String} words
  *
