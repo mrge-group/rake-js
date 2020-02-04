@@ -1,4 +1,4 @@
-import { isAcceptable } from '../../src/lib/keywords'
+import { isAcceptable } from '../../src/utils/keywords'
 
 describe('isAcceptable', () => {
     const phraseOne = 'lirum larum löffelstiel lol rofl frodo baggins'
