@@ -42,7 +42,7 @@ class Phrases {
     /**
      * Get results generated previously.
      *
-     * @returns {*[]}
+     * @returns {Phrase[]}
      */
     get result() {
         return Object.freeze(this._result)
