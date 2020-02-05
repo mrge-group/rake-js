@@ -7,6 +7,7 @@
  */
 
 const extractArticlesWithNouns = (phrases) => {
+    const { result, original, toPhrase, options: overrides } = phrases
     return phrases
 }
 
