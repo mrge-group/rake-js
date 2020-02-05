@@ -7,7 +7,7 @@ import defaults from '../options'
  *
  * @returns {Object}
  */
-export default options = (overrides) => ({
+export default (overrides) => ({
     options: Object.assign(defaults, overrides),
 
     /**
