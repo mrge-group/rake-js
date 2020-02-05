@@ -1,4 +1,3 @@
-import splitWords from '../lib/splitWords'
 import splitByStopWords from '../lib/splitByStopWords'
 import options from '../lib/options'
 
