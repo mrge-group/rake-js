@@ -70,7 +70,7 @@ const extractAdjoinedKeyPhrases = (phrases) => {
         }
     }
 
-    phrases.result = result.concat(validCandidates.map(phrase => toPhrase(phrase)))
+    phrases.result = result.concat(validCandidates.map(phrase => toPhrase(phrase.trim())))
     return phrases
 }
 
