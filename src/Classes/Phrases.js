@@ -55,7 +55,7 @@ class Phrases {
      * @returns {Phrases}
      */
     set result(result) {
-        if (!(result instanceof Array) || !result.every(phrase => phrase instanceof Phrase.Phrase)) {
+        if (!(result instanceof Array) || !result.every(phrase => (phrase instanceof Phrase))) {
             throw 'Results must be instances of Phrase.'
         }
 
