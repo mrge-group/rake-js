@@ -13,7 +13,7 @@ const extractKeyPhrases = (phrases) => {
     const stopWords = options(overrides).get('stopWords', [])
 
     const keyPhrases = splitByStopWords(original, stopWords)
-    .map(phrase => toPhrase(phrase))
+    .map(phrase => toPhrase(phrase.trim()))
 
     phrases.result = result.concat(keyPhrases)
     return phrases
