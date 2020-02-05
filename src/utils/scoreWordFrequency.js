@@ -24,7 +24,9 @@ const scoreWordFrequency = (phrases) => {
                 return
             }
 
-            wordsFrequency[word] = splitWords(original).filter(origWord => origWord.toLowerCase() === word.toLowerCase()).length
+            wordsFrequency[word] = splitWords(original)
+            .filter(origWord => origWord.toLowerCase() === word.toLowerCase())
+            .length
         })
     })
 
