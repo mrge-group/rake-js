@@ -8,10 +8,11 @@
 const distinct = (phrases) => {
     const { result } = phrases
 
-    phrases.result = result.filter((phrase, phraseIndex, allPhrases) => {
-        return !allPhrases.some((checkPhrase, checkIndex) =>
-                checkPhrase.phrase.toLowerCase() === phrase.phrase.toLowerCase() && checkIndex > phraseIndex)
-    })
+    phrases.result = result.filter((phrase, phraseIndex) => {
+        return !result.some((checkPhrase, checkIndex) => {
+            return checkPhrase.phrase.toLowerCase() === phrase.phrase.toLowerCase()
+                && checkIndex < phraseIndex
+    })})
 
     return phrases
 }
