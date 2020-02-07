@@ -7,4 +7,4 @@ import XRegExp from 'xregexp/src'
  *
  * @returns {String[]}
  */
-export default (words) => words.split(XRegExp('[^\\p{L}\\p{M}\\-_]+', 'i'))
+export default (words) => words.split(XRegExp('[^\\p{L}\\p{M}\\p{N}\\-_]+', 'i'))

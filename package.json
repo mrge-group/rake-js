@@ -52,5 +52,8 @@
   },
   "peerDependencies": {
     "xregexp": "~4.2.4"
+  },
+  "dependencies": {
+    "src": "^1.1.2"
   }
 }
