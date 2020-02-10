@@ -9,7 +9,7 @@ export default {
     /** Minimal number of individual words (including stop words) per phrase. */
     minKeyWordsPerPhrase: 1,
     /** Maximum number of individual words (including stop words) per phrase. */
-    maxKeyWordsPerPhrase: 4,
+    maxKeyWordsPerPhrase: 2,
     /** Minimal number of individual words per phrase. */
     minStopWordsPerPhrase: 0,
     /** Maximum number of individual words per phrase. */

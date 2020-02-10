@@ -9,20 +9,22 @@ import articles from '../stopwords/articles'
  */
 
 const extractArticlesWithNouns = (phrases) => {
-    const { result, original, toPhrase, options: overrides } = phrases
+    const {result, original, toPhrase, options: overrides} = phrases
+    const originalLowerCase = original.toLowerCase()
     const returnResult = []
     articles.map(article => {
         result.map(phrase => {
-            const combined = article + ' ' + phrase.phrase
-            // if (original.includes(combined)) {
-                const nounString = original.substr(original.indexOf(combined), combined.length)
+            let combined = article + ' ' + phrase.phrase.toLowerCase()
+            if (phrase.phrase.toLowerCase().includes(article)) combined = phrase.phrase.toLowerCase()
+            if (originalLowerCase.includes(combined)) {
+                const nounString = original.substr(originalLowerCase.indexOf(combined), combined.length)
                 if (nounString.match(/\b[A-Z]\S+/g)) {
                     returnResult.push({
                         phrase: combined,
                         score: phrase.score
                     })
                 }
-            // }
+            }
         })
     })
     phrases.result = returnResult.map(phrase => toPhrase(phrase.phrase, phrase.score))
