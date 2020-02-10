@@ -26,6 +26,7 @@ const keywordLengthFilter = (phrases) => {
         score
     ))
     .filter(({ phrase }) => {
+
         const words = splitWords(phrase)
 
         // Filter phrases outside of word count range.

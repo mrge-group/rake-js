@@ -11,9 +11,7 @@ import options from '../lib/options'
 const extractKeyPhrases = (phrases) => {
     const { result, original, toPhrase, options: overrides } = phrases
     const stopWords = options(overrides).get('stopWords', [])
-
-    const keyPhrases = splitByStopWords(original, stopWords)
-    .map(phrase => toPhrase(phrase.trim()))
+    const keyPhrases = splitByStopWords(original, stopWords).map(phrase => toPhrase(phrase.trim()))
 
     phrases.result = result.concat(keyPhrases)
     return phrases
