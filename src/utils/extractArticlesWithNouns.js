@@ -14,8 +14,7 @@ const extractArticlesWithNouns = (phrases) => {
     const returnResult = []
     articles.map(article => {
         result.map(phrase => {
-            let combined = article + ' ' + phrase.phrase.toLowerCase()
-            // if (phrase.phrase.toLowerCase().includes(article)) combined = phrase.phrase.toLowerCase()
+            const combined = article + ' ' + phrase.phrase.toLowerCase()
             if (originalLowerCase.includes(combined)) {
                 const nounString = original.substr(originalLowerCase.indexOf(combined), combined.length)
                 if (nounString.match(/\b[A-Z]\S+/g)) {
