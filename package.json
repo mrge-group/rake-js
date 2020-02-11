@@ -50,7 +50,10 @@
     "webpack": "~4.41.1",
     "webpack-cli": "~3.3.8"
   },
-  "dependencies": {
+  "peerDependencies": {
     "xregexp": "~4.2.4"
+  },
+  "dependencies": {
+    "src": "^1.1.2"
   }
 }

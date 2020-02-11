@@ -1,4 +1,4 @@
-import splitSentences from '../../src/utils/splitSentences'
+import splitSentences from '../../src/lib/splitSentences'
 import mockData from '../__mocks__/mockData'
 
 describe('splitSentences', () => {

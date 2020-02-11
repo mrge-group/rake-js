@@ -1,7 +1,7 @@
 import defaultOptions from './options'
-import splitSentences from './utils/splitSentences'
-import { findCandidateKeywords, filterDistinctPhrases } from './lib/keywords'
-import { calculateWordScores, calculatePhraseScores } from './lib/scores'
+import splitSentences from './lib/splitSentences'
+import { findCandidateKeywords, filterDistinctPhrases } from './utils/keywords'
+import { calculateWordScores, calculatePhraseScores } from './utils/scores'
 
 /**
  * @param {String}   text

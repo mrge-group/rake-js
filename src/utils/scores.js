@@ -1,4 +1,4 @@
-import splitWords from '../utils/splitWords'
+import splitWords from '../lib/splitWords'
 
 /**
  * Returns objects within an array including words with their calculated score.
