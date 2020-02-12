@@ -1,7 +1,7 @@
 import options from '../lib/options'
 
 /**
- * Retrieve key phrases splitted by stop words.
+ * Retrieve article noun combinations.
  *
  * @param {Phrases} phrases
  *
