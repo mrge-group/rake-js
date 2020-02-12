@@ -1,4 +1,4 @@
-import articles from '../stopwords/articles'
+import options from '../lib/options'
 
 /**
  * Retrieve key phrases splitted by stop words.
@@ -7,11 +7,13 @@ import articles from '../stopwords/articles'
  *
  * @returns {Phrases}
  */
-
 const extractArticlesWithNouns = (phrases) => {
-    const {result, original, toPhrase, options: overrides} = phrases
+    const { result, original, toPhrase, options: overrides } = phrases
+    const articles = options(overrides).get('articles', [])
+
     const originalLowerCase = original.toLowerCase()
     const returnResult = []
+
     articles.map(article => {
         result.map(phrase => {
             const combined = article + ' ' + phrase.phrase.toLowerCase()
