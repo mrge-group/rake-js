@@ -2,13 +2,10 @@
   "name": "@shopping24/rake-js",
   "version": "1.0.1",
   "description": "Use rake to extract important keywords from large texts.",
-  "main": "src/rake.js",
+  "main": "src/extract.js",
   "scripts": {
     "test": "npm run eslint && jest --config jest.config.js",
     "test:jest": "jest --verbose --config jest.config.js",
-    "dev": "npm run build:stoplist && node_modules/webpack/bin/webpack.js --config=webpack.config.js --mode=development",
-    "prod": "npm run build:stoplist && node_modules/webpack/bin/webpack.js --hide-modules --config=webpack.config.js --mode=production",
-    "watch": "node_modules/webpack/bin/webpack.js --watch --config=webpack.config.js --mode=development",
     "eslint": "eslint src --ext .js",
     "build:stoplist": "node scripts/transform_txt.js"
   },
@@ -50,7 +47,10 @@
     "webpack": "~4.41.1",
     "webpack-cli": "~3.3.8"
   },
-  "dependencies": {
+  "peerDependencies": {
     "xregexp": "~4.2.4"
+  },
+  "dependencies": {
+    "src": "^1.1.2"
   }
 }

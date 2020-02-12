@@ -1,4 +1,4 @@
-import { splitByStopWords } from '../../src/lib/keywords'
+import { splitByStopWords } from '../../src/utils/keywords'
 import mockData from '../__mocks__/mockData'
 
 

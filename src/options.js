@@ -3,15 +3,15 @@
  */
 export default {
     /** Any keyword or phrase must have this length. Non-compliant will be removed. */
-    minCharLength: 1,
-    /** Maximal count of words in a loose keyword phrase. Non-compliant will be removed. */
-    maxWordsPerPhrase: 5,
-    /** The frequency a keyword or phrase must be present at scoring. Non-compliant will be removed. */
-    minKeywordFrequency: 1,
-    /** Key phrases will have at least this number of keywords. */
-    minAdjWordsPerPhrase: 1,
-    /** Key phrases will have only this number of keywords at maximal. */
-    maxAdjWordsPerPhrase: 3,
-    /** Same as minKeywordFrequency, only applying for key phrases. */
-    minAdjPhraseFreq: 1
+    minWordLength: 1,
+    /** Any keyword or phrase must must not be longer in length. Non-compliant will be removed. */
+    maxWordLength: 20,
+    /** Minimal number of individual words (including stop words) per phrase. */
+    minKeyWordsPerPhrase: 1,
+    /** Maximum number of individual words (including stop words) per phrase. */
+    maxKeyWordsPerPhrase: 4,
+    /** Minimal number of individual words per phrase. */
+    minStopWordsPerPhrase: 0,
+    /** Maximum number of individual words per phrase. */
+    maxStopWordsPerPhrase: 2
 }
