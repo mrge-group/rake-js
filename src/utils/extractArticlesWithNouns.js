@@ -58,6 +58,7 @@ const findDuplicates = (phrases) => {
                 break
             }
         }
+        phrases.shift()
     }
 
     return resultArr
