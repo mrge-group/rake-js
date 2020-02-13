@@ -21,7 +21,7 @@ const extractArticlesWithNouns = (phrases) => {
                 const nounString = original.substr(originalLowerCase.indexOf(combined), combined.length)
                 if (nounString.match(/\b[A-Z]\S+/g)) {
                     returnResult.push({
-                        phrase: combined,
+                        phrase: phrase.phrase,
                         score: phrase.score
                     })
                 }
