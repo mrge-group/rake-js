@@ -16,7 +16,7 @@ const extractArticlesWithNouns = (phrases) => {
 
     articles.map(article => {
         result.map(phrase => {
-            const combined = article + ' ' + phrase.phrase.toLowerCase()
+            const combined = `${article} ${phrase.phrase.toLowerCase()}`
             if (originalLowerCase.includes(combined)) {
                 const nounString = original.substr(originalLowerCase.indexOf(combined), combined.length)
                 if (nounString.match(/\b[A-Z]\S+/g)) {
@@ -28,8 +28,42 @@ const extractArticlesWithNouns = (phrases) => {
             }
         })
     })
-    phrases.result = returnResult.map(phrase => toPhrase(phrase.phrase, phrase.score))
+    phrases.result = findDuplicates(returnResult).map(phrase => toPhrase(phrase.phrase, phrase.score))
     return phrases
 }
+
+const findDuplicates = (phrases) => {
+    const phraseArr = phrases.map(phrase => phrase.phrase).sort()
+    const resultArr = []
+    let current = phraseArr[0]
+    let count = 0
+    phraseArr.forEach(term => {
+        if (term === current) {
+            count++
+        } else {
+            resultArr.push({
+                phrase: current,
+                score: count,
+                scored: false
+            })
+
+            current = term
+            count = 1
+        }
+    })
+
+    for (let i = 0; i < resultArr.length; i++) {
+        const multiplierPhrase = resultArr[i]
+        for (let j = 0; j < phrases.length; j++) {
+            if (multiplierPhrase.phrase === phrases[j].phrase) {
+                multiplierPhrase.score *= phrases[j].score
+                break
+            }
+        }
+    }
+
+    return resultArr
+}
+
 
 export default extractArticlesWithNouns
