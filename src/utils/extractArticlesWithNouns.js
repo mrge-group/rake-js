@@ -32,6 +32,12 @@ const extractArticlesWithNouns = (phrases) => {
     return phrases
 }
 
+/** Boosts article noun combinations and removes duplicates
+ *
+ * @param phrases
+ * @returns {[]}
+ */
+
 const findDuplicates = (phrases) => {
     const phraseArr = phrases.map(phrase => phrase.phrase).sort()
     const resultArr = []
