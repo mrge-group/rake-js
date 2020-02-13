@@ -45,7 +45,7 @@ class Phrases {
      * @returns {Phrase[]}
      */
     get result() {
-        return Object.freeze(this._result)
+        return this._result
     }
 
     /**
@@ -68,7 +68,7 @@ class Phrases {
      * @returns {string}
      */
     get original() {
-        return Object.freeze(this._original)
+        return this._original
     }
 
     /**
@@ -96,7 +96,7 @@ class Phrases {
      * @returns {Object}
      */
     get options() {
-        return Object.freeze(this._options)
+        return this._options
     }
 
     /**
