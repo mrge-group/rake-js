@@ -44,9 +44,7 @@ const findDuplicates = (phrases) => {
             resultArr.push({
                 phrase: current,
                 score: count,
-                scored: false
             })
-
             current = term
             count = 1
         }
