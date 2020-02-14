@@ -28,11 +28,17 @@ const extractArticlesWithNouns = (phrases) => {
             }
         })
     })
-    phrases.result = findDuplicates(returnResult).map(phrase => toPhrase(phrase.phrase, phrase.score))
+    phrases.result = boostScore(returnResult).map(phrase => toPhrase(phrase.phrase, phrase.score))
     return phrases
 }
 
-const findDuplicates = (phrases) => {
+/** Boosts article noun combinations and removes duplicates
+ *
+ * @param phrases
+ * @returns {[]}
+ */
+
+const boostScore = (phrases) => {
     const phraseArr = phrases.map(phrase => phrase.phrase).sort()
     const resultArr = []
     let current = phraseArr[0]
