@@ -24,4 +24,9 @@ fs.readdirSync(directory).forEach(dir => {
     `export default ${JSON.stringify(returnObj)}`, (err) => {
         if (err) throw err
     })
+
+    fs.writeFile(`dist/${dir}.js`,
+    `module.exports = ${JSON.stringify(returnObj)}`, (err) => {
+        if (err) throw err
+    })
 })
