@@ -2,7 +2,7 @@ import splitWords from '../lib/splitWords'
 import options from '../lib/options'
 
 /**
- * Calculate word scoring based on word appearance frequency and degree.
+ * Calculate word scoring based on word appearance frequency.
  *
  * @param {Phrases} phrases
  *
@@ -16,7 +16,7 @@ const scoreWordFrequency = (phrases) => {
 
     const wordsFrequency = {}
 
-    // Calculate words frequency and degree.
+    // Calculate words frequency.
     result.forEach(({ phrase }) => {
         splitWords(phrase)
         .forEach(word => {
