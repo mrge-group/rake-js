@@ -27,7 +27,7 @@ const text = 'Die Kopf-Rumpf-Länge des Jaguars beträgt 112 cm bis 185 cm, hinz
 'kg wiegen. Weibliche Jaguare in Brasilien wiegen durchschnittlich fast 80 kg.[2]';
 
 const { result } = rakejs.extract(text)
-.setOptions({ articles: deDict.articles, stopWords: deDict.stopWords.concat(deDict.articles) })
+.setOptions({ articles: deDict.articles, stopWords: deDict.stopwords.concat(deDict.articles) })
 .pipe(rakejs.extractKeyPhrases)
 .pipe(rakejs.extractAdjoinedKeyPhrases)
 .pipe(rakejs.keywordLengthFilter)
