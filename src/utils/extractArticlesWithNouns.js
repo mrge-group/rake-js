@@ -49,7 +49,7 @@ const boostScore = (phrases) => {
         } else {
             resultArr.push({
                 phrase: current,
-                score: count,
+                score: count
             })
             current = term
             count = 1
@@ -69,6 +69,5 @@ const boostScore = (phrases) => {
 
     return resultArr
 }
-
 
 export default extractArticlesWithNouns

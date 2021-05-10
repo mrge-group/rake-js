@@ -5,6 +5,8 @@ env:
 # Using the highly recommended rules of Airbnb https://github.com/airbnb/javascript
 extends: airbnb
 
+ignorePatterns: ["*/dictionary/*"]
+
 rules:
   # we want to leave out parentheses whenever we like at arrow functions
   arrow-parens: off
@@ -80,3 +82,6 @@ rules:
   camelcase:
     - off
   no-continue: off
+  no-underscore-dangle: off
+  func-names: off
+  array-callback-return: off
