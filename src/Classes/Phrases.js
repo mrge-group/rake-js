@@ -5,7 +5,6 @@ import Phrase from './Phrase'
  * and provides methods for piping phrases through processing methods.
  */
 class Phrases {
-
     constructor({ result = [], original = '', options = {} }) {
         this._result = result
         this._original = original
@@ -22,7 +21,7 @@ class Phrases {
         const pipelined = method(this.fresh())
 
         if (!(pipelined instanceof Phrases)) {
-            throw 'Pipeline Methods must return an instance of Phrases.'
+            throw new Error('Pipeline Methods must return an instance of Phrases.')
         }
 
         return pipelined
@@ -56,7 +55,7 @@ class Phrases {
      */
     set result(result) {
         if (!(result instanceof Array) || !result.every(phrase => (phrase instanceof Phrase))) {
-            throw 'Results must be instances of Phrase.'
+            throw new Error('Results must be instances of Phrase.')
         }
 
         this._result = result
@@ -77,7 +76,7 @@ class Phrases {
      * @param _
      */
     set original(_) {
-        throw 'You shall not change the original content.'
+        throw new Error('You shall not change the original content.')
     }
 
     /**
@@ -86,7 +85,7 @@ class Phrases {
      * @param {Object} options
      * @returns {Phrases}
      */
-    setOptions(options= {}) {
+    setOptions(options = {}) {
         return this.fresh({ options: Object.assign(this._options, options) })
     }
 
@@ -105,7 +104,7 @@ class Phrases {
      * @param _
      */
     set options(_) {
-        throw 'You shall not change the options inline.'
+        throw new Error('You shall not change the options inline.')
     }
 
     /**
@@ -115,11 +114,12 @@ class Phrases {
      * @returns {Phrases}
      */
     fresh(args) {
-        return new Phrases(Object.assign({
+        return new Phrases({
             result: this._result,
             original: this._original,
-            options: this._options
-        }, args))
+            options: this._options,
+            ...args
+        })
     }
 }
 

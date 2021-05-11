@@ -1,4 +1,4 @@
-import XRegExp from 'xregexp/src'
+import XRegExp from 'xregexp'
 
 /**
  * Split words by characters-non-word characters, digits, underscore, plus, minus and slash.

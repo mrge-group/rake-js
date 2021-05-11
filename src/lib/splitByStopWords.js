@@ -1,4 +1,4 @@
-import XRegExp from 'xregexp/src'
+import XRegExp from 'xregexp'
 
 /**
  * Split sentence into phrases separated by stop words.
