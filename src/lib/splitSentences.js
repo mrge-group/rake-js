@@ -1,4 +1,4 @@
-import XRegExp from 'xregexp/src'
+import XRegExp from 'xregexp'
 
 /**
  * Split text into sentences.

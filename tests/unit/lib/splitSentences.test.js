@@ -1,5 +1,5 @@
-import splitSentences from '../../src/lib/splitSentences'
-import mockData from '../__mocks__/mockData'
+import splitSentences from '../../../src/lib/splitSentences'
+import mockData from '../../__mocks__/mockData'
 
 describe('splitSentences', () => {
     const standard = mockData.defaultText

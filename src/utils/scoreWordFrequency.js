@@ -30,10 +30,10 @@ const scoreWordFrequency = (phrases) => {
         })
     })
 
-    phrases.result = result.map(({ phrase, score}) => toPhrase(
+    phrases.result = result.map(({ phrase, score }) => toPhrase(
         phrase,
         score + splitWords(phrase)
-            .reduce((phraseAccumulator, word) => phraseAccumulator + (wordsFrequency[word] || 0), 0)
+        .reduce((phraseAccumulator, word) => phraseAccumulator + (wordsFrequency[word] || 0), 0)
     ))
 
     return phrases
